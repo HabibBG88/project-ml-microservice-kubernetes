@@ -1,4 +1,4 @@
-#<include a CircleCI status badge, here>
+CircleCI status badge
 [![CircleCI](https://circleci.com/gh/HabibBG88/project-ml-microservice-kubernetes.svg?style=svg)](https://circleci.com/gh/HabibBG88/project-ml-microservice-kubernetes)
 
 ## Project Overview
@@ -35,7 +35,11 @@ python3 -m pip install --user virtualenv
 python3 -m virtualenv --python=<path-to-Python3.7> .devops
 source .devops/bin/activate
 ```
+* Run python3.7 -m venv ~/.devops to create virtual env with python3.7 installed
+* Run source ~/.devops/bin/activate to activate venv .devops
 * Run `make install` to install the necessary dependencies
+* Run make lint (pylint app.py files and hadolint Dockerfile) to detect errors in the code.
+* Can also run make all instead of previous two steps.
 
 ### Running `app.py`
 
@@ -45,7 +49,28 @@ source .devops/bin/activate
 
 ### Kubernetes Steps
 
-* Setup and Configure Docker locally
+* Setup and Configure Docker locally:
+  - install docker : Check KVM virtualization support and follow the instruction in this link :https://docs.docker.com/get-docker/
+  - Run ./run_docker.sh
+  - Run docker ps to check if docker is running.
+  - Run ./make_prediction.sh to make prediction and copy/paste the logging info at terminal to output_txt_files/docker_out.txt
+
+
+
 * Setup and Configure Kubernetes locally
+  - Run curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+  - Run sudo install minikube-linux-amd64 /usr/local/bin/minikube
+  - Run minikube start to start minikube
+  - Run kubectl get pods to see which pods are running.
+  - Run ./run_kubernetes.sh
+  - Run ./make_prediction.sh to make prediction and copy/paste the logging info at terminal to output_txt_files/kubernetes_out.txt
 * Create Flask app in Container
-* Run via kubectl
+  - Run ./run_docker.sh to build and start the Flask app container.
+  - Run ./upload_docker.sh to upload the container to docker hub.
+  - Run ./make_prediction.sh to make prediction and copy/paste the logging info at terminal to output_txt_files/docker_out.txt
+* Run via kubectl:
+  - Run minikube start to start minikube
+  - Run ./run_kuberenets.sh script.
+  - Run kubectl get pod and ensure that the status is Running 
+  - Run ./run_kuberenets.sh script again.
+  - Run ./make_prediction.sh to make prediction and copy/paste the logging info at terminal to output_txt_files/kubernetes_out.txt

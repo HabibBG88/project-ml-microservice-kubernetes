@@ -7,3 +7,8 @@ NAME                               READY   STATUS    RESTARTS   AGE
 ml-microservice-788b7ff557-j2f2r   1/1     Running   0          15m
 Forwarding from 0.0.0.0:8000 -> 80
 Handling connection for 8000
+
+-------------
+2023-02-25 00:02:54,448] INFO in app: JSON payload: 
+{ "prediction":[20.35373177134412]}
+172.17.0.1 - - [25/Feb/2023 00:02:54] "POST /predict HTTP/1.1" 200 -
