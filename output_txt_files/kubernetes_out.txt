@@ -1,0 +1,9 @@
+deployment.apps/ml-microservice created
+NAME                               READY   STATUS              RESTARTS   AGE
+ml-microservice-788b7ff557-j2f2r   0/1     ContainerCreating   0          1s
+--------------
+error: failed to create deployment: deployments.apps "ml-microservice" already exists
+NAME                               READY   STATUS    RESTARTS   AGE
+ml-microservice-788b7ff557-j2f2r   1/1     Running   0          15m
+Forwarding from 0.0.0.0:8000 -> 80
+Handling connection for 8000
